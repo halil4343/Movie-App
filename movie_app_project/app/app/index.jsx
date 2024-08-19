@@ -1,12 +1,27 @@
-import { Link } from 'expo-router';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
-export default function HomePage() {
+const CustomButton = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Page</Text>
-      <Link href="/profile.jsx">click here to go profile</Link>
-    </View>
+    <TouchableOpacity>
+      <View>
+        <Text>hi</Text>
+      </View>
+    </TouchableOpacity>
+  )
+}
+
+
+export default function index() {
+  return (
+    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
+      <ScrollView>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum </Text>
+          <CustomButton />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }

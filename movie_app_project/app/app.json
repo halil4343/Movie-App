@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "app",
+    "scheme": "Movies",
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -33,6 +34,9 @@
     },
     "updates": {
       "url": "https://u.expo.dev/b9c643a7-c8f7-4c38-b1a0-e7b40d76c072"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
