@@ -4,7 +4,7 @@ import { Tabs, Redirect } from "expo-router"
 import { icons } from "../../constants/icons"
 import bookmark from "../../../app/assets/icons/bookmark.png";
 import profile from "../../../app/assets/icons/profile.png";
-import home from "../../../app/assets/icons/home.png";
+import imgofhome from "../../../app/assets/icons/home.png";
 
 
 
@@ -45,14 +45,15 @@ const TabLayout = () => {
           },
         }}
       >
+        
         <Tabs.Screen
-          name="Home"
+          name="home"
           options={{
             title: "Home",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
               <TabIcon
-                icon={home} // Use the correct icon here
+                icon={imgofhome} // Use the correct icon here
                 color={color}
                 name="Home"
                 focused={focused}
@@ -67,12 +68,12 @@ const TabLayout = () => {
             title: "Wishlist",
             headerShown: false,
             tabBarIcon: ({ color, focused }) => (
-              <TabIcon
-                icon={bookmark}
-                color={color}
-                name="Bookmark"
-                focused={focused}
-              />
+              <TabIcon 
+                  icon={bookmark}
+                  color={color}
+                  name="Wishlist"
+                  focused={focused}
+                  />
             ),
           }}
         />

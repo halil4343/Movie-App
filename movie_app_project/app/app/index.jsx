@@ -1,3 +1,4 @@
+import { Link } from 'expo-router';
 import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -19,7 +20,7 @@ export default function index() {
       <ScrollView>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum </Text>
-          <CustomButton />
+          <Link href={"/home"}>link</Link>
         </View>
       </ScrollView>
     </SafeAreaView>
