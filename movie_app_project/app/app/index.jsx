@@ -1,7 +1,7 @@
 import { Link } from 'expo-router';
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { images } from  "../constants"
 
 const CustomButton = () => {
   return (
@@ -16,11 +16,14 @@ const CustomButton = () => {
 
 export default function index() {
   return (
-    <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
-      <ScrollView>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum </Text>
-          <Link href={"/home"}>link</Link>
+    <SafeAreaView className = " h-full " style = {{backgroundColor : "#161622"}}>
+      <ScrollView contentContainerStyle={{height : "100%"}} >
+        <View className={"justify-center items-center w-full h-full px-4"}>
+          <Image source={images.logo}
+                 className = {"w-[130px] h-[90]"}
+          ></Image>
+          <Text>Welcome </Text>
+          <Link href={"/home"}>go to homepage</Link>
         </View>
       </ScrollView>
     </SafeAreaView>
