@@ -4,9 +4,9 @@ import { Link } from 'expo-router'
 
 const Home = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View className="flex-1 bg-[#161622]">
       <Text>Home</Text>
-      <Link href={"/index"}>go to onboarding</Link>
+      <Link href={"index"}>go to onboarding</Link>
     </View>
   )
 }
