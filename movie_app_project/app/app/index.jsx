@@ -15,7 +15,7 @@ export default function index() {
       <ScrollView contentContainerStyle={{height : "100%"}}>
         <View className="items-center w-full h-full justify-start mt-12">
           <Image 
-            source={images.logo}
+            source={images.mlogo}
             className = "w-[120px] h-[36px]"
           />
           <Image source = {images.cards} className="w-full h-[380px]"

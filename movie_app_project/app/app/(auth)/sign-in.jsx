@@ -23,8 +23,8 @@ const SignIn = () => {
     <SafeAreaView className="bg-primary h-full">
       <ScrollView>
       <View className = " justify-center w-full h-full px-6 my-6">
-        <Image source={images.logo} className="w-[140px] h-[42px]"/> 
-        <Text className="text-white text-2xl text-semibold font-pbold mt-6 mb-5">Log in to Aora</Text>
+        <Image source={images.mlogo} className="w-[180px] h-[122px]"/> 
+        <Text className="text-white text-2xl text-semibold font-pbold mt-6 mb-5">Log in to M-Series</Text>
         <FormField title="Email" value= {form.email} placeholder={"name123@gmail.com"}/>
         <FormField title="Password" value= {form.password}  />
         <CustomButton otherStyles={"mt-5 h-14"}
