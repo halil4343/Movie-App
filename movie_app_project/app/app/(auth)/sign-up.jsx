@@ -1,10 +1,16 @@
-import { View, Text, ScrollView, Image, TouchableOpacity} from 'react-native'
+import { View, Text, ScrollView, Image, TouchableOpacity, Alert} from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from "../../constants";
 import FormField from "../../components/FormField"
 import CustomButton from "../../components/customButton"
-import {Link} from "expo-router"
+import {Link, router} from "expo-router"
+import {createUser} from "../../lib/appwrite"
+
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
+}
 
 const SignUp = () => {
 
@@ -14,8 +20,24 @@ const SignUp = () => {
     password:""
   })
 
-  const submit = () => {
-  }
+  const submit = async () => {
+    if (form.username === "" || form.email === "" || form.password === "") {
+      Alert.alert("Error", "Please fill in all fields");
+    }
+
+    setIsSubmitting(true);
+    try {
+      const result = await createUser(form.email, form.password, form.username);
+      setUser(result);
+      setIsLogged(true);
+
+      router.replace("/home");
+    } catch (error) {
+      Alert.alert("Error", error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const [isSubmitting,setIsSubmitting] = useState(false)
 
@@ -26,9 +48,9 @@ const SignUp = () => {
       <View className = " justify-center w-full h-full px-6 my-6">
         <Image source={images.mlogo} className="w-[180px] h-[122px]"/> 
         <Text className="text-white text-2xl text-semibold font-pbold mt-6 mb-5">Sign up to M-Series</Text>
-        <FormField title="Username" value={form.username}/>
-        <FormField title="Email" value= {form.email} placeholder={"name123@gmail.com"}/>
-        <FormField title="Password" value= {form.password}  />
+        <FormField title="Username" value={form.username} handleChangeText={(e) => setForm({ ...form, username: e })}/>
+        <FormField title="Email" value= {form.email} handleChangeText={(e) => setForm({ ...form, email: e })}/>
+        <FormField title="Password" value= {form.password} handleTextChange={(e)=> setForm({...form, password})} />
         <CustomButton otherStyles={"mt-5 h-14"}
                       title="Sign up"
                       handlePress={submit}
