@@ -9,7 +9,6 @@ export const config = {
     userCollectionId:"66ffd5750001d142ed63",
     productId:"66ffd9bc00293152d252",
     storage:"66ffda1a0026dc9b1bd4",
-
 }
 
 const client = new Client();
@@ -39,8 +38,8 @@ export async function createUser(email, password, username) {
       await signIn(email, password);
   
       const newUser = await databases.createDocument(
-        appwriteConfig.databaseId,
-        appwriteConfig.userCollectionId,
+        config.databaseId,
+        config.userCollectionId,
         ID.unique(),
         {
           accountId: newAccount.$id,
@@ -56,11 +55,45 @@ export async function createUser(email, password, username) {
     }
   }
   
-
-export async function signIn(email,password){
+  // Sign In
+  export async function signIn(email, password) {
     try {
-        const session = await account.createEmailPasswordSession(email,password)
+      const session = await account.createEmailPasswordSession(email,password)
+  
+      return session;
     } catch (error) {
-        throw Error(error)
+      throw new Error(error);
     }
-}
+  }
+  
+  // Get Account
+  export async function getAccount() {
+    try {
+      const currentAccount = await account.get();
+  
+      return currentAccount;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+  
+  // Get Current User
+  export async function getCurrentUser() {
+    try {
+      const currentAccount = await getAccount();
+      if (!currentAccount) throw Error;
+  
+      const currentUser = await databases.listDocuments(
+        config.databaseId,
+        config.userCollectionId,
+        [Query.equal("accountId", currentAccount.$id)]
+      );
+  
+      if (!currentUser) throw Error;
+  
+      return currentUser.documents[0];
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }

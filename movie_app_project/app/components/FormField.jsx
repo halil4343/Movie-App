@@ -5,7 +5,7 @@ import {icons} from "../constants"
 import { useState } from 'react'
 
 
-const FormField = ({title,value,handleTextChange,otherStyles,placeholder,...props}) => {
+const FormField = ({title,value, onChangeText ,otherStyles,placeholder,...props}) => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
@@ -13,7 +13,7 @@ const FormField = ({title,value,handleTextChange,otherStyles,placeholder,...prop
         <Text className="text-white text-xl font-pregular mt-4">{title}</Text>
         <View className="w-full h-20 px-4 bg-black-100 rounded-2xl border-2 border-black focus:border-secondary flex flex-row items-center">
             <TextInput className="items-center text-white font-pregular flex-1 text-base "
-                        onChangeText={handleTextChange}
+                        onChangeText={onChangeText}
                         placeholder={placeholder}
                         placeholderTextColor={"#7b7b8b"}
                         secureTextEntry={title==="Password" && !showPassword}
