@@ -5,8 +5,7 @@ import { images } from "../../constants";
 import FormField from "../../components/FormField"
 import CustomButton from "../../components/customButton"
 import {Link, router} from "expo-router"
-import {createUser} from "../../lib/appwrite"
-import debounce from 'lodash/debounce';
+import {createUser} from "../../lib/appwrite2"
 
 const SignUp = () => {
 
@@ -20,22 +19,21 @@ const SignUp = () => {
     if (form.username === "" || form.email === "" || form.password === "") {
         Alert.alert("Error", "Please fill in all fields");
     }
-
+    console.log(form)
     setIsSubmitting(true);
-    console.log("Form Values:", form); // Log the values
 
-    try {
+    //try {
         const result = await createUser(form.email, form.password, form.username);
         console.log("User created successfully:", result); // Log success
         setUser(result);
         setIsLogged(true);
         router.replace("/home");
-    } catch (error) {
-        console.error("Error creating user:", error); // Log error
-        Alert.alert("Error", error.message);
-    } finally {
+    // } catch (error) {
+    //     console.error("Error creating user:", error); // Log error
+    //     Alert.alert("Error", error.message);
+    //} finally {
         setIsSubmitting(false);
-    }
+    //}
 };
 
 
