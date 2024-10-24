@@ -4,6 +4,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from "../constants";
 import CustomButton from '../components/customButton';
 import { NativeWindStyleSheet } from "nativewind";
+import dotenv from "dotenv"
+import {connect} from "../lib/db"
+
+dotenv.config()
+connect()
 
 NativeWindStyleSheet.setOutput({
   default: "native",
